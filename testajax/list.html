@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+</head>
+<body>
+<input id="name" placeholder="Name">
+<input id="price" placeholder="Price">
+<input id="description" placeholder="Description">
+<button onclick="create()">Create</button>
+<table border="1px">
+    <tr>
+        <td>Id</td>
+        <td>Name</td>
+        <td>Price</td>
+        <td>Description</td>
+        <td>Delete</td>
+    </tr>
+    <tbody id="tbody">
+    <td>4</td>
+    <td>Ba dep trai</td>
+    <td>1222</td>
+    <td>viet nam</td>
+    <td><a></a></td>
+    </tbody>
+</table>
+<script src="ajax.js"></script>
+</body>
+</html>
+
+<!--<!DOCTYPE html>-->
+<!--<html lang="en" xmlns:th="http://www.thymeleaf.org">-->
+<!--<head>-->
+<!--    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>-->
+<!--    <title>List Smartphone</title>-->
+<!--    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>-->
+<!--    <script type="text/javascript">-->
+
+<!--        function addNewSmartPhone() {-->
+<!--            //lay du lieu-->
+<!--            let name = $('#name').val();-->
+<!--            let price = $('#price').val();-->
+<!--            let description = $('#description').val();-->
+<!--            let newProduct = {-->
+<!--                name: name,-->
+<!--                price: price,-->
+<!--                description: description-->
+<!--            };-->
+<!--            // goi ajax-->
+<!--            $.ajax({-->
+<!--                headers: {-->
+<!--                    'Accept': 'application/json',-->
+<!--                    'Content-Type': 'application/json'-->
+<!--                },-->
+<!--                type: "POST",-->
+<!--                data: JSON.stringify(newSmartphone),-->
+<!--                //tên API-->
+<!--                url: "http://localhost:63342/api/products",-->
+<!--                //xử lý khi thành công-->
+<!--                success: successHandler-->
+
+<!--            });-->
+<!--            //chặn sự kiện mặc định của thẻ-->
+<!--            event.preventDefault();-->
+<!--        }-->
+
+<!--        function successHandler() {-->
+<!--            $.ajax({-->
+<!--                type: "GET",-->
+<!--                //tên API-->
+<!--                url: "http://localhost:63342/api/products",-->
+<!--                //xử lý khi thành công-->
+<!--                success: function (data) {-->
+<!--                    // hien thi danh sach o day-->
+<!--                    let content = '    <tr>\n' +-->
+<!--                        '        <td>Name</td>\n' +-->
+<!--                        '        <td>Price</td>\n' +-->
+<!--                        '        <td>Description</td>\n' +-->
+<!--                        '        <td>Delete</td>\n' +-->
+<!--                        '    </tr>';-->
+<!--                    for (let i = 0; i < data.length; i++) {-->
+<!--                        content += getProduct(data[i]);-->
+<!--                    }-->
+<!--                    document.getElementById('productList').innerHTML = content;-->
+<!--                }-->
+<!--            });-->
+<!--        }-->
+
+<!--        function getProduct(product) {-->
+<!--            return `<tr><td >${product.name}</td><td >${product.price}</td><td >${product.description}</td>` +-->
+<!--                `<td><a class="deleteProduct" href="${product.id}">Delete</a></td></tr>`;-->
+<!--        }-->
+
+<!--        $(document).ready(function () {-->
+<!--            //sư kiện nào thực hiện Ajax-->
+<!--            $('.deleteProduct').click(function (event) {-->
+<!--                //lay du lieu-->
+<!--                let a = $(this);-->
+<!--                let productId = a.attr("href");-->
+<!--                // goi ajax-->
+<!--                $.ajax({-->
+<!--                    type: "DELETE",-->
+<!--                    //tên API-->
+<!--                    url: `http://localhost:63342/api/products/${productId}`,-->
+<!--                    //xử lý khi thành công-->
+<!--                    success: function (data) {-->
+<!--                        a.parent().parent().remove();-->
+<!--                    }-->
+
+<!--                });-->
+<!--                //chặn sự kiện mặc định của thẻ-->
+<!--                event.preventDefault();-->
+<!--            });-->
+<!--        })-->
+<!--    </script>-->
+<!--</head>-->
+<!--<body>-->
+<!--<form id="add-product">-->
+<!--    <table>-->
+<!--        <tr>-->
+<!--            <td>Name:</td>-->
+<!--            <td><input type="text" id="name" placeholder="Name"></td>-->
+<!--        </tr>-->
+<!--        <tr>-->
+<!--            <td>Price:</td>-->
+<!--            <td><input type="text" id="price" placeholder="Price"></td>-->
+<!--        </tr>-->
+<!--        <tr>-->
+<!--            <td>Description:</td>-->
+<!--            <td><input type="text" id="description" placeholder="Description"></td>-->
+<!--        </tr>-->
+<!--        <tr>-->
+<!--            <td></td>-->
+<!--            <td><input type="submit" value="Add" onclick="addNewProduct()"></td>-->
+<!--        </tr>-->
+<!--    </table>-->
+<!--</form>-->
+<!--<h1>Product List</h1>-->
+<!--<table id="productList">-->
+<!--    <tr>-->
+<!--        <td>Name</td>-->
+<!--        <td>Price</td>-->
+<!--        <td>Description</td>-->
+<!--        <td>Delete</td>-->
+<!--    </tr>-->
+<!--    <th:block th:each="product: ${products}">-->
+<!--        <tr>-->
+<!--            <td th:text="${smartphone.producer}"></td>-->
+<!--            <td th:text="${smartphone.model}"></td>-->
+<!--            <td th:text="${smartphone.price}"></td>-->
+<!--            <td><a class="deleteSmartphone" th:href="${smartphone.getId()}">Delete</a></td>-->
+<!--        </tr>-->
+<!--    </th:block>-->
+<!--</table>-->
+<!--</body>-->
+<!--</html>-->
