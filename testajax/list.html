@@ -6,23 +6,31 @@
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 </head>
 <body>
+<form >
+    <input type="text" id="search" name="search" placeholder="search">
+    <input type="submit" value="Search" onclick="searchProduct()">
+</form>
+<input type="hidden" id="id">
 <input id="name" placeholder="Name">
 <input id="price" placeholder="Price">
 <input id="description" placeholder="Description">
 <button onclick="create()">Create</button>
-<table border="1px">
+<button onclick="editProducts()">Edit</button>
+<table border="1px" id="products">
     <tr>
         <td>Id</td>
         <td>Name</td>
         <td>Price</td>
         <td>Description</td>
         <td>Delete</td>
+        <td>Edit</td>
     </tr>
     <tbody id="tbody">
     <td>4</td>
     <td>Ba dep trai</td>
     <td>1222</td>
     <td>viet nam</td>
+    <td><a></a></td>
     <td><a></a></td>
     </tbody>
 </table>

@@ -3,6 +3,8 @@ package com.example.productmanagement.controller;
 import com.example.productmanagement.model.Product;
 import com.example.productmanagement.service.product.IProductService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -53,5 +55,17 @@ public class RestProductController {
         }
         productService.remove(id);
         return new ResponseEntity<>(productOptional.get(), HttpStatus.NO_CONTENT);
+    }
+    @GetMapping("/ba")
+    public ResponseEntity<Iterable<Product>> findAllProduct(@RequestParam Optional<String> search, Pageable pageable) {
+        Page<Product> products = productService.findAll(pageable);
+        if (products.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }
+        if (search.isPresent()) {
+            return new ResponseEntity<>(productService.findAllByName(search.get(), pageable), HttpStatus.OK);
+        }
+        return new ResponseEntity<>(products, HttpStatus.OK);
+
     }
 }
